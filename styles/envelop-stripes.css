@@ -1,0 +1,11 @@
+.envelop-stripes {
+  background-image: repeating-linear-gradient(-45deg,
+      rgba(155, 85, 72) 0,
+      rgba(155, 85, 72) 10px,
+      transparent 10px,
+      transparent 20px,
+      rgba(49, 65, 158, 1) 20px,
+      rgba(49, 65, 158, 1) 30px,
+      transparent 30px,
+      transparent 40px);
+}
