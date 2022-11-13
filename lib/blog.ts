@@ -1,6 +1,7 @@
 import { getFilesRecursively, readFileAsString } from "./utils/files";
 import { load } from 'js-yaml'
 import { assert } from "console";
+import { resolve } from "path";
 
 export interface Blog {
   posts: Array<Post>,
@@ -25,7 +26,7 @@ export const initBlog = async () => {
     return __BLOG_INSTANCE;
   }
 
-  const sourcePath = '/Users/tang/Projects/yeli-cn.github.io/source/';
+  const sourcePath = './source';
   const posts = await loadAllPosts(sourcePath);
 
   let instance = {
@@ -41,6 +42,7 @@ export const initBlog = async () => {
 
 
 const loadAllPosts = async (path: string): Promise<Array<Post>> => {
+  path = resolve(path);
   const files = getFilesRecursively(path).filter(file => file.endsWith('.md'));
   return files.map(file => {
     const { content, metadata } = parseMetadata(readFileAsString(file));
